@@ -1,0 +1,16 @@
+name: build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile dylib
+        run: |
+          xcrun -sdk iphoneos clang -arch arm64 -miphoneos-version-min=16.0 \
+            -dynamiclib -fobjc-arc -framework UIKit -framework Foundation \
+            -o ResFix.dylib ResFix.m
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ResFix
+          path: ResFix.dylib
