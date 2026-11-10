@@ -2,7 +2,7 @@
 #import <objc/runtime.h>
 
 // 在原生分辨率的基础上再乘多少倍。2.0 = 再提高一倍,1.5 = 折中。
-#define MULT 2.0
+#define MULT 0.3
 
 static void (*orig_setCSF)(id, SEL, CGFloat);
 
